@@ -13,7 +13,10 @@ class Post extends Component {
   componentDidMount() {
     // This is where you would make an axios call to a server in a fullstack application
     // but for today we'll be just be filtering an array of dummy data
-    let post = posts.find(post => post.id === 2);
+
+    // use parseInt to turn the id found on params into an integer, it comes as a string from the URL
+    // the parameters (params) are found on props
+    let post = posts.find(post => post.id === parseInt(this.props.match.params.id));
     this.setState({
       title: post.title,
       content: post.content
